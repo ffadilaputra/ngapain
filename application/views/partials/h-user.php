@@ -22,6 +22,7 @@
 				<div class="right menu">
 					<div class="item">
 						<a href="<?= base_url('story/make') ?>" class="ui button teal">Make a Story</a>&nbsp;
+						<a href="<?= base_url('user/profil') ?>" class="ui button teal">Edit Profil</a>&nbsp;
 						<a href="<?= base_url('auth/logout') ?>" class="ui button">Logout</a>
 					</div>
 				</div>

@@ -13,8 +13,11 @@ class Story_model extends CI_Model{
 	}
 
 	public function storyAll(){
+		$this->db->select('*');
+		$this->db->from('tb_story');
+		$this->db->join('tb_user','tb_user.id = tb_story.fk_user','left');
 		$this->db->order_by('date','DESC');
-		$read = $this->db->get('tb_story');
+		$read = $this->db->get();
         return $read->result();
 	}
 
@@ -31,8 +34,11 @@ class Story_model extends CI_Model{
 	}
 
 	public function getByStory($id){
-		$this->db->order_by('date','DESC');
+		$this->db->select('*');
 		$this->db->from('tb_story');
+		$this->db->join('tb_user','tb_user.id = tb_story.fk_user','left');
+		$this->db->order_by('date','DESC');
+
 		$this->db->where('fk_user',$id);
 		$getById = $this->db->get();
 

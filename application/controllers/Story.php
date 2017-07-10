@@ -38,13 +38,16 @@ class Story extends CI_Controller{
 }
 }
 	public function ajax_view(){
-		$this->load->library('Datatables');
-        $this->datatables->select('id_story,title,date')->from('tb_story');
-        echo $this->datatables->generate();
+		// $this->load->library('Datatables');
+  //       $this->datatables->select('id_story,title,date')->from('tb_story');
+  //       echo $this->datatables->generate();
+		$data['list'] = $this->Story_model->storyAll();
+		$this->load->view('datatable_search',$data);
 	}
 
 	public function ajax_search(){
-		$this->load->view('datatable_search');
+		$data['list'] = $this->Story_model->storyAll();
+		$this->load->view('datatable_search',$data);
 	}
 
 	public function list(){
