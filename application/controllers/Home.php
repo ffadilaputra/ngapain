@@ -19,16 +19,13 @@ class Home extends CI_Controller {
             $data['list'] = $this->Story_model->storyAll();
             $this->load->view('user-dashboard',$data);
     		
-    	}elseif($session_data['role'] === 'admin'){
+    	}elseif($session_data['level'] === 'admin'){
     			//$this->load->view('partials/header-user');
     	}
     	}else{
     		$this->load->view('partials/header');
     		$this->load->view('home');
     	}	 
-
-       
-  
     }
 }
 

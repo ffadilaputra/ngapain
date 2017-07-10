@@ -51,4 +51,46 @@ class Story extends CI_Controller{
 		$this->load->view('user_dashboard',$data);
 	}
 
+	public function edit($id){
+		$data['emp'] = $this->Story_model->getById($id);
+        $this->load->view('edit_story',$data);
+
+        $this->form_validation->set_rules('title','title','trim|required');
+		$this->form_validation->set_rules('desc','desc','trim|required');	
+
+		if ($this->form_validation->run() === FALSE) {
+			$this->load->view('edit_story');
+		}else {
+
+			$config['upload_path'] = 'assets/uploads';
+			$config['allowed_types'] = 'gif|jpg|png';
+        	$config['max_size'] = '1000000000';
+
+        	$this->load->library('upload', $config);
+
+        	if(!$this->upload->do_upload('image')){
+        		$err = array('error' => $this->upload->display_errors());
+        		var_dump($err); 
+        		var_dump($_POST);
+        	}else{
+
+        	$path = "assets/upload/";
+         	$get_record = $this->Story_model->getById($id);
+         	$file = $get_record[0]->img_story;
+         	unlink($path . $file);
+
+	        $image_data = $this->upload->data();
+        	$this->Story_model->editStory($id);
+        	$this->session->set_flashdata('msg_success', 'Story has been update');
+        	redirect('home','refresh');
+				}
+			}
+		}
+
+		public function delete($id){
+			$this->Story_model->deleteStory($id);
+			redirect('home','refresh');
+
+		}
+
 }
