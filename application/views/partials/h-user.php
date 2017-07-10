@@ -1,4 +1,9 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); 
+	if ($this->session->userdata('logged_in')) {
+    	$session_data = $this->session->userdata('logged_in');
+    	$data['id'] = $session_data['id'];
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -13,6 +18,7 @@
 				<div class="header item">Terjelembab</div>
 				<a href="<?= base_url() ?>" class="active item">Home</a>
 				<a href="<?= base_url('story/ajax_search') ?>" class="item">Search</a>
+				<a href="<?= base_url('story/storybyUser') ?>/<?= $session_data['id'] ?>" class="item">Your Story</a>
 				<div class="right menu">
 					<div class="item">
 						<a href="<?= base_url('story/make') ?>" class="ui button teal">Make a Story</a>&nbsp;

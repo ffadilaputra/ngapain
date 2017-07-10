@@ -12,13 +12,15 @@
 					<span class="cinema">IFC Cinema</span>
 				</div>
 				<div class="description">
-					<p><?= $data->desc ?></p>
+					<p><?= character_limiter($data->desc,30); ?></p>
 				</div>
 				<div class="extra">
-					<a class="ui right floated primary button">
+					<a href="<?= base_url('story/read') ?>/<?= $data->id_story ?>" class="ui right floated primary button">
 						Readmore
 						<i class="right chevron icon"></i>
 					</a>
+
+					
 					<a href="<?= base_url('story/edit') ?>/<?= $data->id_story ?>" class="ui right floated primary button">
 						Edit
 						<i class="right chevron icon"></i>
@@ -27,10 +29,14 @@
 						Delete
 						<i class="right chevron icon"></i>
 					</a>
+				
 					<div class="ui label">Limited</div>
 				</div>
 			</div>
+			
 		</div>
 		<?php endforeach; ?>
 	</div>
+	<br>
+	<br>
 </div>

@@ -1,10 +1,20 @@
-<?php $this->load->view('partials/h-user') ?>
+<?php $this->load->view('partials/h-user');
+
+	if ($this->session->userdata('logged_in')) {
+    	$session_data = $this->session->userdata('logged_in');
+    	$data['id'] = $session_data['id'];
+    	}
+
+ ?>
 <br>
 <div class="ui container">
 	<?php
 		$attr = array('class' => 'ui form');
 		echo form_open_multipart('story/make',$attr);
 	?>
+
+	<input type="hidden" name="fk_user" value="<?= $data['id'] = $session_data['id']; ?>">
+
 	<div class="field">
 		<label>Title</label>
 		<input type="text" name="title" placeholder="Title">

@@ -6,12 +6,14 @@ class Story_model extends CI_Model{
 		$roar = array('title' =>  $this->input->post('title'),
 					  'img_story' => $this->upload->data('file_name'),
 					  'desc' => $this->input->post('desc'),
-					  'date' => date("Y-m-d")
+					  'date' => date("Y-m-d"),
+					  'fk_user' => $this->input->post('fk_user')
 		);
 		$this->db->insert('tb_story',$roar);
 	}
 
 	public function storyAll(){
+		$this->db->order_by('date','DESC');
 		$read = $this->db->get('tb_story');
         return $read->result();
 	}
@@ -26,6 +28,16 @@ class Story_model extends CI_Model{
 		}else{
 			return false;
 		}
+	}
+
+	public function getByStory($id){
+		$this->db->order_by('date','DESC');
+		$this->db->from('tb_story');
+		$this->db->where('fk_user',$id);
+		$getById = $this->db->get();
+
+		return $getById->result();
+		
 	}
 
 	public function editStory($id){

@@ -6,6 +6,7 @@ class Story extends CI_Controller{
 	{
 		parent::__construct();
 		$this->load->model('Story_model');
+		$this->load->helper('text');		
 	}
 
 	public function make(){
@@ -59,12 +60,12 @@ class Story extends CI_Controller{
 		$this->form_validation->set_rules('desc','desc','trim|required');	
 
 		if ($this->form_validation->run() === FALSE) {
-			$this->load->view('edit_story');
+			// $this->load->view('edit_story');
 		}else {
 
-			$config['upload_path'] = 'assets/uploads';
+			$config['upload_path']   = 'assets/uploads';
 			$config['allowed_types'] = 'gif|jpg|png';
-        	$config['max_size'] = '1000000000';
+        	$config['max_size']      = '1000000000';
 
         	$this->load->library('upload', $config);
 
@@ -91,6 +92,17 @@ class Story extends CI_Controller{
 			$this->Story_model->deleteStory($id);
 			redirect('home','refresh');
 
+		}
+
+		public function storybyUser($id){
+			$this->load->view('partials/h-user');
+			$data['list'] = $this->Story_model->getByStory($id);
+			$this->load->view('user-dashboard',$data);
+		}
+
+		public function read($id){
+			$data['detel'] = $this->Story_model->getById($id);			
+			$this->load->view('read_story',$data);
 		}
 
 }
