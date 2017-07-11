@@ -2,8 +2,7 @@
     	$session_data = $this->session->userdata('logged_in');
     	$data['id'] = $session_data['id'];
     }
-    ?>
-
+?>
 <br><br>
 <div class="ui main container">
 	<div class="ui divided items">

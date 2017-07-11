@@ -12,10 +12,10 @@
 			<div class="ui container">
 				<div class="header item">Terjelembab</div>
 				<a href="<?= base_url() ?>" class="active item">Home</a>
-				<a class="item">Search</a>
+				<a class="item">Ban</a>
 				<div class="right menu">
 					<div class="item">
-						<a href="<?= base_url('auth') ?>" class="ui button">Log-in</a>
+						<a href="<?= base_url('auth/logout') ?>" class="ui button">Logout</a>
 					</div>
 				</div>
 			</div>

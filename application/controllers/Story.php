@@ -6,6 +6,7 @@ class Story extends CI_Controller{
 	{
 		parent::__construct();
 		$this->load->model('Story_model');
+		$this->load->model('Comment_model');
 		$this->load->helper('text');		
 	}
 
@@ -104,7 +105,8 @@ class Story extends CI_Controller{
 		}
 
 		public function read($id){
-			$data['detel'] = $this->Story_model->getById($id);			
+			$data['detel']   = $this->Story_model->getById($id);
+			$data['comment'] = $this->Comment_model->allComment($id);			
 			$this->load->view('read_story',$data);
 		}
 
