@@ -6,7 +6,7 @@
 				<th>USername</th>
 				<th>Email</th>
 				<th>Bio</th>
-				<th>Option</th>
+				<th>Image</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -16,7 +16,9 @@
 					<td><?= $key->username ?></td>
 					<td><?= $key->email ?></td>
 					<td><?= $key->bio ?></td>
-					<td><a class="ui button teal" href="<?= base_url('story/read') ?>/<?= $key->id ?>">DETAILS</a></td>
+					<td>
+					<img width="50" src="<?= base_url('assets/uploads') ?>/<?= $key->avatar ?>">
+					</td>
 				</tr>
 		<?php endforeach; ?>		
 		</tbody>

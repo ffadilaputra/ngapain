@@ -8,14 +8,14 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Boooo</title>
+		<title>Undertree</title>
 		<link rel="stylesheet" href="<?php echo base_url('assets/semantic/semantic.min.css') ?>">
 		<link rel="stylesheet" href="<?php echo base_url('assets/datatable/dataTables.semanticui.min.css') ?>">
 	</head>
 	<body>
 		<div class="ui menu">
 			<div class="ui container">
-				<div class="header item">Terjelembab</div>
+				<div class="header item">Bukan Medium</div>
 				<a href="<?= base_url() ?>" class="active item">Home</a>
 				<a href="<?= base_url('story/ajax_search') ?>" class="item">Search</a>
 				<a href="<?= base_url('story/storybyUser') ?>/<?= $session_data['id'] ?>" class="item">Your Story</a>
